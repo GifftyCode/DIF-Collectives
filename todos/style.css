@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.todo {
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.todo:last-child {
+  border-bottom: none;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+.status {
+  font-size: 14px;
+  color: #888;
+}
+
+.completed {
+  color: green;
+  font-weight: bold;
+}
+
+.not-completed {
+  color: red;
+  font-weight: bold;
+}
