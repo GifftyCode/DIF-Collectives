@@ -1,40 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { testimonials } from "../data/mockData";
+import quote from "../images/quote.png";
 
 const Testimonials = () => {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
+  };
+
   return (
-    <div className="py-20 bg-white">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-12">
           What are our customers saying
         </h2>
 
-        <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-            <div>
+        <div className="relative">
+          <div className="flex items-center">
+            <div className="w-48 h-48 overflow-hidden mr-8 flex-shrink-0">
               <img
-                src="/api/placeholder/300/300"
-                alt="Customer testimonial"
-                className="w-64 h-64 rounded-2xl object-cover mx-auto lg:mx-0"
+                src={testimonials[currentTestimonial].image}
+                alt={testimonials[currentTestimonial].name}
               />
             </div>
 
-            <div>
-              <div className="text-4xl text-green-600 mb-4">"</div>
-              <p className="text-lg text-gray-700 mb-6">
-                The platform is really convenient to reach out to companies & I
-                have managed to secure 2 interviews already! I can also track my
-                application status instead of wondering whether the company has
-                seen or shortlisted me
-              </p>
-              <div>
-                <p className="font-semibold text-gray-900">Irma Black</p>
-                <p className="text-gray-600">HR Manager at MasterCard</p>
+            <div className="flex-1">
+              <div className="bg-gray-50 rounded-lg p-6 relative ">
+                <p className="text-gray-700 text-lg italic mb-12 ">
+                  <img src={quote} alt="" className="w-12 h-12" />
+                  {testimonials[currentTestimonial].text}
+                </p>
+                <div>
+                  <p className="font-semibold text-gray-900 mb-4 ">
+                    {testimonials[currentTestimonial].name}
+                  </p>
+                  <p className="text-gray-400">
+                    {testimonials[currentTestimonial].position}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
+
+          <div className="flex justify-end mt-6 space-x-4">
+            <button
+              onClick={prevTestimonial}
+              className="p-2 border border-gray-300 rounded-full hover:bg-gray-100"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={nextTestimonial}
+              className="p-2 bg-green-600 text-white rounded-full hover:bg-green-700"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -7,7 +7,6 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              {/* <Users className="h-8 w-8 text-green-600" /> */}
               <img src={logo} alt="Logo" className="h-12 w-auto" />
             </div>
           </div>

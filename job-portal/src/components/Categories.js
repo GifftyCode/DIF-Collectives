@@ -1,33 +1,6 @@
-import {
-  GraduationCap,
-  Heart,
-  Shield,
-  Monitor,
-  PieChart,
-  Calculator,
-  Palette,
-} from "lucide-react";
+import { categories } from "../data/mockData";
 
 const Categories = () => {
-  const categories = [
-    { name: "Oil and Gas", count: 20, icon: <Monitor className="w-8 h-8" /> },
-    { name: "Healthcare", count: 10, icon: <Heart className="w-8 h-8" /> },
-    {
-      name: "Education",
-      count: 10,
-      icon: <GraduationCap className="w-8 h-8" />,
-    },
-    { name: "Accounting", count: 10, icon: <Calculator className="w-8 h-8" /> },
-    {
-      name: "Design, Art and Multimedia",
-      count: 20,
-      icon: <Palette className="w-8 h-8" />,
-    },
-    { name: "Technology", count: 10, icon: <Monitor className="w-8 h-8" /> },
-    { name: "Security", count: 10, icon: <Shield className="w-8 h-8" /> },
-    { name: "Data Analyst", count: 10, icon: <PieChart className="w-8 h-8" /> },
-  ];
-
   return (
     <div className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
