@@ -8,12 +8,12 @@ const Footer = () => {
   return (
     <footer className="bg-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           <div>
-            <div className="flex items-center mb-4">
-              <img src={logo} alt="Logo" className="h-12 w-auto" />
+            <div className="  mb-4">
+              <img src={logo} alt="Logo" className="h-16 w-auto" />
               <span className="ml-2 text-xl font-bold text-gray-900">
-                getajobng
+                getajob<span className="text-green-600">ng</span>
               </span>
             </div>
             <p className="text-gray-600 text-sm">
