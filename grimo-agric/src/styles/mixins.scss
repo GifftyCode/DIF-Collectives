@@ -1,0 +1,96 @@
+@import "variables";
+
+// Flexbox mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Responsive breakpoints
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  }
+  @if $breakpoint == md {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+// Button mixin
+@mixin button-base {
+  padding: 12px 24px;
+  border: none;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+}
+
+// Card mixin
+@mixin card-base {
+  background: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+// Container mixin
+@mixin container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include respond-to(xl) {
+    padding: 0 40px;
+  }
+}
+
+// Section spacing
+@mixin section-spacing {
+  padding: $spacing-3xl 0;
+
+  @include respond-to(md) {
+    padding: 120px 0;
+  }
+}
