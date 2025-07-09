@@ -17,32 +17,7 @@ const initialState = {
   user: null,
   currentPage: "home",
   isMenuOpen: false,
-  testimonials: [
-    {
-      id: 1,
-      name: "Martin Bailey",
-      role: "Supervisor",
-      rating: 5,
-      text: "I would recommend practitioners at this center to everyone! They are great to work with and are excellent trainers. Thank you all!",
-      avatar: "/api/placeholder/50/50",
-    },
-    {
-      id: 2,
-      name: "Emma Greed",
-      role: "Customer",
-      rating: 4,
-      text: "I would recommend practitioners at this center to everyone! They are great to work with and are excellent trainers. Thank you all!",
-      avatar: "/api/placeholder/50/50",
-    },
-    {
-      id: 3,
-      name: "Daniel Craig",
-      role: "Co-Founder",
-      rating: 5,
-      text: "I would recommend practitioners at this center to everyone! They are great to work with and are excellent trainers. Thank you all!",
-      avatar: "/api/placeholder/50/50",
-    },
-  ],
+
   blogPosts: [
     {
       id: 1,
@@ -69,6 +44,7 @@ const initialState = {
       image: "/api/placeholder/400/300",
     },
   ],
+
   services: [
     {
       id: 1,
@@ -159,7 +135,7 @@ const initialState = {
   ],
   showcaseContent: {
     badge: {
-      icon: "/api/placeholder/16/16", // Replace with your Figma exported icon
+      icon: "/api/placeholder/16/16",
       iconAlt: "Plant Icon",
       text: "Grow Naturally",
     },
