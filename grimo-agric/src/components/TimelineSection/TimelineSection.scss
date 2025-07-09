@@ -1,0 +1,111 @@
+.timeline-section {
+  background: #fdfdf6;
+  padding: 10px 20px;
+
+  .timeline-content {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      position: relative;
+      padding-top: 40px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 90px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #c8d5c1;
+        z-index: 0;
+      }
+
+      .timeline-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+
+        .timeline-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #4a7c59;
+          position: absolute;
+          top: 44px;
+          left: 0;
+          z-index: 1;
+        }
+
+        .timeline-year {
+          font-size: 2.8rem;
+          font-weight: 700;
+          color: #4a7c59;
+          opacity: 0.15;
+          margin-left: 20px;
+          margin-bottom: 40px;
+        }
+
+        .timeline-title {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #2f2f2f;
+          margin-bottom: 10px;
+          margin-left: 20px;
+        }
+
+        .timeline-description {
+          font-size: 14px;
+          color: #666;
+          line-height: 1.5;
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .timeline-content {
+      .timeline-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+
+        &::before {
+          top: 50px;
+        }
+
+        .timeline-item {
+          .timeline-dot {
+            top: 44px;
+          }
+
+          .timeline-year {
+            font-size: 2.3rem;
+            margin-bottom: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+
+    .timeline-content {
+      .timeline-grid {
+        grid-template-columns: 1fr;
+
+        .timeline-item {
+          .timeline-year {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
