@@ -78,12 +78,10 @@ const TestimonialsSection = () => {
   return (
     <section className="testimonials-section">
       <div className="container">
-        {/* Header */}
         <div className="testimonials-header">
           <span className="section-badge">Testimonial</span>
           <h2 className="section-title">What our customers say</h2>
 
-          {/* Navigation buttons */}
           <div className="testimonials-nav">
             <button
               className="nav-btn prev-btn"
@@ -102,7 +100,6 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        {/* Testimonials Grid */}
         <div className="testimonials-grid">
           {testimonials.map((testimonial, index) => (
             <div
@@ -143,7 +140,6 @@ const TestimonialsSection = () => {
           ))}
         </div>
 
-        {/* Brand Logos */}
         <div className="brands-section">
           <div className="brands-grid">
             {brands.map((brand) => (

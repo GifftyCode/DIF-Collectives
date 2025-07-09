@@ -1,0 +1,481 @@
+// Footer.scss
+
+// Variables
+$primary-green: #8bc34a; // Approximate primary green from image
+$secondary-green: #4caf50; // Darker green from original icon
+$footer-bg-color: #f8f7f0; // Light grey background of the main content area
+$top-bar-bg-color: #eddd5e; // Light yellow from the top bar
+$text-dark: #404a3d; // Dark text color for headings/logo
+$text-light-grey: #666666; // General body text color
+$text-lighter-grey: #999999; // Copyright text
+$border-color: #e5e5e5; // Separator lines
+$white: #fff;
+$icon-light-grey-bg: #f8f7f0; // Background for social/contact icons
+
+// Fonts (adjust if you have specific font files imported elsewhere)
+$font-signika: "Signika", Helvetica, sans-serif;
+$font-roboto: "Roboto", Helvetica, sans-serif;
+
+// Mixins
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexStartCenter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flexBetweenCenter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  position: relative;
+  background-color: $footer-bg-color; // Main footer content area background
+  padding-bottom: 40px; // Padding for the bottom section
+  overflow: hidden; // Keep decorative elements contained
+
+  // New Top Bar Section
+  &__top-bar {
+    background-color: $top-bar-bg-color;
+    padding: 20px 0;
+    margin-bottom: 80px; // Space between top bar and main footer content
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); // Subtle shadow if desired
+
+    .top-bar__container {
+      max-width: 1400px; // Wider container as seen in image
+      margin: 0 auto;
+      padding: 0 20px;
+      @include flexBetweenCenter;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+    }
+
+    .top-bar__nav {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 40px; // Space between nav items
+
+        li {
+          position: relative; // Needed for ::before positioning
+          a {
+            text-decoration: none;
+            color: $text-dark;
+            font-family: $font-signika;
+            font-weight: 500;
+            font-size: 16px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            padding-left: 15px; // Space for the dot
+
+            // White circular dot
+            &::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 6px; // Size of the dot
+              height: 6px; // Size of the dot
+              background-color: $white; // White color
+              border-radius: 50%;
+            }
+
+            &:hover {
+              color: $primary-green;
+            }
+          }
+          // Remove dot from the first item
+          &:first-child a::before {
+            display: none;
+          }
+        }
+      }
+      @media (max-width: 768px) {
+        width: 100%; // full width for smaller screens
+        justify-content: center; // center nav
+        ul {
+          gap: 20px;
+          flex-wrap: wrap; // Allow nav items to wrap
+          justify-content: center;
+          li a {
+            padding-left: 0; // Remove dot padding for small screens
+            &::before {
+              display: none; // Hide dots on small screens for simplicity
+            }
+          }
+        }
+      }
+    }
+
+    // Vertical Separator
+    .top-bar__separator {
+      width: 1px; // Thickness of the line
+      height: 25px; // Height of the line, reduced size
+      background-color: rgba(
+        $text-dark,
+        0.2
+      ); // Light dark color with transparency
+      margin: 0 30px; // Space around the separator
+
+      @media (max-width: 768px) {
+        display: none; // Hide on smaller screens
+      }
+    }
+
+    .top-bar__contact {
+      @include flexCenter;
+      gap: 20px;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .contact__item {
+        @include flexCenter;
+        gap: 8px;
+        font-family: $font-roboto;
+        font-size: 16px;
+        color: $text-dark;
+        text-decoration: none; // For links
+
+        .contact__icon {
+          width: 50px;
+          height: 50px;
+          background-color: $white; // White circle background
+          border-radius: 50%;
+          @include flexCenter;
+          color: $primary-green; // Icon color
+          font-size: 14px;
+        }
+
+        span {
+          white-space: nowrap; // Prevent wrapping for phone/email
+        }
+      }
+    }
+  }
+
+  // Main Footer Content Area
+  &__container {
+    max-width: 1400px; // Adjust to match top bar width for consistency
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; // Matches image layout
+    gap: 60px;
+    margin-bottom: 50px;
+
+    @media (max-width: 1024px) {
+      // Adjust for smaller desktops/large tablets
+      grid-template-columns: 1.5fr 1fr 1fr; // Adjust columns for better fit
+      gap: 40px;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  }
+
+  // New: Main Heading / Tagline
+  &__tagline {
+    grid-column: 2 / -1; // Spans across the right columns
+    font-family: $font-signika;
+    font-weight: 500;
+    font-size: 28px; // Adjusted from image
+    line-height: 1.2;
+    color: $text-dark;
+    margin-bottom: 30px; // Space below tagline to sections
+
+    @media (max-width: 1024px) {
+      grid-column: 1 / -1; // Full width on smaller screens
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__brand {
+    // No max-width as it takes its natural space in the grid
+  }
+
+  &__logo {
+    @include flexCenter; // Center the icon and text
+    justify-content: flex-start; // Align to start of column
+    margin-bottom: 24px;
+
+    .logo__icon {
+      margin-right: 12px;
+      // SVG path colors from original code: #8BC34A, #4CAF50
+    }
+
+    .logo__text {
+      font-family: $font-signika;
+      font-size: 30px; // Larger logo text as in image
+      font-weight: 700;
+      color: $text-dark;
+    }
+  }
+
+  &__description {
+    color: $text-light-grey;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    font-size: 15px; // Slightly smaller to fit image
+    font-family: $font-roboto;
+  }
+
+  &__social {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__links,
+  &__hours,
+  &__address {
+    .footer__title {
+      font-family: $font-signika;
+      font-size: 18px;
+      font-weight: 600;
+      color: $text-dark;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__links {
+    .links__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 12px; // Reduced spacing
+      }
+
+      .links__item {
+        color: $text-light-grey;
+        text-decoration: none;
+        font-size: 15px; // Slightly smaller
+        font-family: $font-roboto;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $primary-green;
+        }
+      }
+    }
+  }
+
+  &__hours {
+    .hours__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .hours__item {
+        margin-bottom: 12px; // Reduced spacing
+        color: $text-light-grey;
+        font-size: 15px;
+        line-height: 1.5;
+        font-family: $font-roboto;
+      }
+    }
+  }
+
+  &__address {
+    .address__content {
+      color: $text-light-grey;
+      font-style: normal;
+      font-size: 15px;
+      line-height: 1.8;
+      font-family: $font-roboto;
+    }
+  }
+
+  // Bottom Section
+  &__bottom {
+    border-top: 1px solid $border-color;
+    padding-top: 30px;
+    @include flexBetweenCenter;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
+  }
+
+  &__legal {
+    display: flex;
+    gap: 32px;
+
+    .legal__link {
+      color: $text-light-grey;
+      text-decoration: none;
+      font-size: 14px;
+      font-family: $font-roboto;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary-green;
+      }
+    }
+  }
+
+  &__copyright {
+    p {
+      color: $text-lighter-grey;
+      font-size: 14px;
+      margin: 0;
+      font-family: $font-roboto;
+    }
+  }
+
+  // Decorative Elements
+  &__decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0; // Behind content
+    overflow: hidden; // Ensures parts don't spill
+  }
+
+  .decoration__leaf {
+    position: absolute;
+    left: 10%; // Adjusted position
+    top: 60%; // Adjusted position
+    transform: translate(-50%, -50%) rotate(-15deg);
+    width: 250px; // Larger
+    height: 250px; // Larger
+    background-image: url("https://via.placeholder.com/250x250/e8f5e8?text=Leaf+SVG"); // Placeholder, ideally a subtle leaf SVG
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.1; // Very subtle
+    filter: grayscale(100%) brightness(150%); // Make it look like a pale grey leaf
+    mix-blend-mode: multiply; // To blend nicely with background
+  }
+
+  .decoration__wheat {
+    position: absolute;
+    right: -20px; // Slightly off-screen to match image
+    bottom: -20px; // Slightly off-screen
+    width: 200px; // Size
+    height: 250px; // Size
+    background-image: url("https://via.placeholder.com/200x250/deb887?text=Wheat+SVG"); // Placeholder, ideally a subtle wheat SVG
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.15; // Subtle
+    filter: brightness(110%); // Slightly brighter
+  }
+}
+
+// Social Links (Font Awesome 5 assumed for icons)
+.social__link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $icon-light-grey-bg; // Light grey circle background
+  @include flexCenter;
+  color: $text-dark; // Icon color
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $primary-green;
+    color: $white;
+    transform: translateY(-2px);
+  }
+
+  i {
+    font-size: 16px;
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .footer {
+    &__content {
+      grid-template-columns: 1fr 1fr; // Adjust for tablets
+    }
+    .decoration__leaf {
+      left: 0%;
+      top: 50%;
+      width: 200px;
+      height: 200px;
+    }
+    .decoration__wheat {
+      right: 0%;
+      bottom: 0%;
+      width: 150px;
+      height: 200px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding-bottom: 30px;
+
+    &__top-bar {
+      margin-bottom: 40px;
+      padding: 15px 0;
+      .top-bar__nav ul {
+        gap: 20px;
+      }
+      .top-bar__contact {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    &__content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    &__tagline {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    &__brand {
+      max-width: 100%;
+      text-align: center;
+      .footer__logo {
+        justify-content: center;
+      }
+      .footer__description {
+        text-align: center;
+      }
+      .footer__social {
+        justify-content: center;
+      }
+    }
+
+    &__decoration {
+      display: none; // Hide decorative elements on very small screens
+    }
+  }
+}

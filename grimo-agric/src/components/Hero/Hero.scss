@@ -25,7 +25,6 @@
     z-index: -1;
   }
 
-  // Navbar Styles
   &__navbar {
     display: flex;
     align-items: center;
@@ -78,7 +77,6 @@
     }
   }
 
-  // Logo Styles
   &__logo {
     display: flex;
     align-items: center;
@@ -96,7 +94,6 @@
     }
   }
 
-  // Dropdown Styles
   &__dropdown {
     &-icon {
       font-size: 10px;
@@ -131,7 +128,6 @@
     }
   }
 
-  // Contact Info Styles
   &__contact-info {
     display: flex;
     align-items: center;
@@ -165,7 +161,6 @@
     }
   }
 
-  // Search Button
   &__search-btn {
     background: none;
     border: none;
@@ -183,7 +178,6 @@
     color: white;
   }
 
-  // CTA Button
   &__cta-btn {
     background: white;
     color: #333;
@@ -210,7 +204,6 @@
     font-size: 16px;
   }
 
-  // Main Content
   &__content {
     flex: 1;
     display: flex;
@@ -281,7 +274,6 @@
     font-size: 18px;
   }
 
-  // Controls
   &__controls {
     position: absolute;
     bottom: 40px;
@@ -317,7 +309,6 @@
   }
 }
 
-// Responsive Design
 @media (max-width: 1024px) {
   .hero {
     &__navbar {
@@ -383,7 +374,7 @@
       padding: 10px 15px;
 
       &-menu {
-        display: none; // Hide menu on mobile, implement hamburger menu
+        display: none;
       }
     }
 

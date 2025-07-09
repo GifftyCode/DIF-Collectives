@@ -14,6 +14,7 @@ import HistorySection from "./components/HistorySection/HistorySection";
 import TimelineSection from "./components/TimelineSection/TimelineSection";
 import Banner from "./components/Banner/Banner";
 import BlogSection from "./components/Blog/BlogSection";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <TimelineSection />
       <Banner />
       <BlogSection />
+      <Footer />
     </div>
   );
 }
