@@ -1,0 +1,213 @@
+.organic-food-section {
+  padding: 100px 0;
+  background-color: #f8f9fa;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .image-section {
+    position: relative;
+
+    .main-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+
+      .farmer-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 20px;
+      }
+
+      .stats-card {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        background: linear-gradient(135deg, #f4d03f 0%, #e6c547 100%);
+        padding: 25px 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+        .stats-number {
+          font-size: 36px;
+          font-weight: 700;
+          color: #2c3e50;
+          line-height: 1;
+          margin-bottom: 5px;
+        }
+
+        .stats-label {
+          font-size: 14px;
+          color: #2c3e50;
+          font-weight: 500;
+          line-height: 1.3;
+        }
+      }
+    }
+  }
+
+  .content-section {
+    .section-header {
+      margin-bottom: 50px;
+
+      .section-tag {
+        display: inline-block;
+        color: #8fbc8f;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: -30px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 20px;
+          height: 2px;
+          background-color: #8fbc8f;
+        }
+      }
+
+      .section-title {
+        font-size: 48px;
+        font-weight: 700;
+        color: #2c3e50;
+        line-height: 1.2;
+        margin-bottom: 25px;
+
+        @media (max-width: 768px) {
+          font-size: 36px;
+        }
+      }
+
+      .section-description {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.7;
+        max-width: 500px;
+      }
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .feature-item {
+        .feature-icon {
+          width: 70px;
+          height: 70px;
+          background-color: #f0f8f0;
+          border-radius: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 20px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: #e8f5e8;
+            transform: translateY(-2px);
+          }
+
+          .icon-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        .feature-title {
+          font-size: 20px;
+          font-weight: 600;
+          color: #2c3e50;
+          margin-bottom: 15px;
+          line-height: 1.3;
+        }
+
+        .feature-description {
+          font-size: 14px;
+          color: #666;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1024px) {
+  .organic-food-section {
+    padding: 80px 0;
+
+    .content-wrapper {
+      gap: 60px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .organic-food-section {
+    padding: 60px 0;
+
+    .image-section {
+      .main-image {
+        .stats-card {
+          bottom: 20px;
+          right: 20px;
+          padding: 20px 25px;
+
+          .stats-number {
+            font-size: 28px;
+          }
+
+          .stats-label {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .content-section {
+      .section-header {
+        margin-bottom: 40px;
+
+        .section-title {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+}

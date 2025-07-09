@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
+import container from "../assets/images/Container.png";
 
 // Initial state
 const initialState = {
@@ -64,7 +65,7 @@ const initialState = {
       category: "CULTIVATE",
       description:
         "Farming and animal husbandry and discuss with farmers and scientists.",
-      image: "/api/placeholder/400/300",
+      image: container,
     },
     {
       id: 2,
