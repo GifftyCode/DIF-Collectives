@@ -5,6 +5,8 @@ import Features from "./components/Features/Features";
 import Products from "./components/Products/Products";
 import Services from "./components/Services/Services";
 import Overview from "./components/Overview/Overview";
+import ScrollingBanner from "./components/Scrolling-banner/ScrollingBanner";
+import FeaturesShowcase from "./components/Features-showcase/FeaturesShowcase";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       <Hero />
       <Features />
       <Overview />
-      <Products />
+      <ScrollingBanner />
+      <Services />
+      <FeaturesShowcase />
     </div>
   );
 }
