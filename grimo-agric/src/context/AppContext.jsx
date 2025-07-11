@@ -18,33 +18,6 @@ const initialState = {
   currentPage: "home",
   isMenuOpen: false,
 
-  blogPosts: [
-    {
-      id: 1,
-      title: "What technology is used in vertical farming?",
-      category: "FOOD CROPS",
-      date: "MARCH 28, 2024",
-      author: "ADMIN",
-      image: "/api/placeholder/400/300",
-    },
-    {
-      id: 2,
-      title: "Which type of farming is more prevalent today?",
-      category: "ORGANIC FARM",
-      date: "MARCH 28, 2024",
-      author: "ADMIN",
-      image: "/api/placeholder/400/300",
-    },
-    {
-      id: 3,
-      title: "The Farmers Sentiment Darkens Hopes Fade",
-      category: "FARMING TIPS",
-      date: "MARCH 28, 2024",
-      author: "ADMIN",
-      image: "/api/placeholder/400/300",
-    },
-  ],
-
   services: [
     {
       id: 1,

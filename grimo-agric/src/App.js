@@ -1,38 +1,29 @@
+// src/App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 
-import Hero from "./components/Hero/Hero";
-import Features from "./components/Features/Features";
-
-import Services from "./components/Services/Services";
-import Overview from "./components/Overview/Overview";
-import ScrollingBanner from "./components/Scrolling-banner/ScrollingBanner";
-import FeaturesShowcase from "./components/Features-showcase/FeaturesShowcase";
-import TestimonialsSection from "./components/Testimonial/TestimonialSection";
-
-import CallToAction from "./components/CallToAction/CallToAction";
-import HistorySection from "./components/HistorySection/HistorySection";
-import TimelineSection from "./components/TimelineSection/TimelineSection";
-import Banner from "./components/Banner/Banner";
-import BlogSection from "./components/Blog/BlogSection";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
 import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <Hero />
-      <Features />
-      <Overview />
-      <ScrollingBanner />
-      <Services />
-      <FeaturesShowcase />
-      <TestimonialsSection />
-      <CallToAction />
-      <HistorySection />
-      <TimelineSection />
-      <Banner />
-      <BlogSection />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            {/* Add more routes as needed */}
+            {/* <Route path="/services" element={<Services />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/contact" element={<Contact />} /> */}
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

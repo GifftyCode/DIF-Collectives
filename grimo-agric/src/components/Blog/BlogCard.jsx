@@ -1,4 +1,3 @@
-import React from "react";
 import "./BlogCard.scss";
 
 const BlogCard = ({
