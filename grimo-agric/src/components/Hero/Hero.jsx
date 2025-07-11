@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Hero.scss";
 import logo from "../../assets/images/logo.png";
+import phone from "../../assets/icons/phoneH.png";
+import search from "../../assets/icons/search.png";
 
 const Hero = ({
   title,
@@ -62,84 +64,12 @@ const Hero = ({
         </div>
 
         <div className="hero__navbar-menu">
-          {/* <div className="hero__navbar-item hero__navbar-item--dropdown">
-            <button className="hero__navbar-link" onClick={toggleHomeDropdown}>
-              HOME
-              <span className="hero__dropdown-icon">▼</span>
-            </button>
-            {isHomeDropdownOpen && (
-              <div className="hero__dropdown-menu">
-                <Link
-                  to="/"
-                  className="hero__dropdown-item"
-                  onClick={closeDropdowns}
-                >
-                  HOME 1
-                </Link>
-                <Link
-                  to="/"
-                  className="hero__dropdown-item"
-                  onClick={closeDropdowns}
-                >
-                  HOME 2
-                </Link>
-                <Link
-                  to="/"
-                  className="hero__dropdown-item"
-                  onClick={closeDropdowns}
-                >
-                  HOME 3
-                </Link>
-              </div>
-            )}
-          </div> */}
           <div className="hero__navbar-item">
             <Link to="/" className="hero__navbar-link">
               HOME
               <span className="hero__dropdown-icon">▼</span>
             </Link>
           </div>
-
-          {/* <div className="hero__navbar-item hero__navbar-item--dropdown">
-            <button className="hero__navbar-link" onClick={togglePagesDropdown}>
-              About
-              <span className="hero__dropdown-icon">▼</span>
-            </button>
-            {isPagesDropdownOpen && (
-              <div className="hero__dropdown-menu">
-                <Link
-                  to="/about"
-                  className={`hero__dropdown-item ${
-                    location.pathname === "/about" ? "active" : ""
-                  }`}
-                  onClick={closeDropdowns}
-                >
-                  About Us
-                </Link>
-                <Link
-                  to="/services"
-                  className="hero__dropdown-item"
-                  onClick={closeDropdowns}
-                >
-                  Our Services
-                </Link>
-                <Link
-                  to="/team"
-                  className="hero__dropdown-item"
-                  onClick={closeDropdowns}
-                >
-                  Our Team
-                </Link>
-                <Link
-                  to="/pricing"
-                  className="hero__dropdown-item"
-                  onClick={closeDropdowns}
-                >
-                  Pricing
-                </Link>
-              </div>
-            )}
-          </div> */}
 
           <div className="hero__navbar-item">
             <Link to="/about" className="hero__navbar-link">
@@ -178,7 +108,10 @@ const Hero = ({
         <div className="hero__navbar-actions">
           <div className="hero__contact-info">
             <div className="hero__phone">
-              <span className="hero__phone-icon">📞</span>
+              <span className="hero__phone-icon">
+                {" "}
+                <img src={phone} alt="" />
+              </span>
               <div className="hero__phone-text">
                 <div className="hero__phone-label">Call us Now</div>
                 <div className="hero__phone-number">+1(210)255-511</div>
@@ -187,7 +120,9 @@ const Hero = ({
           </div>
 
           <button className="hero__search-btn">
-            <span className="hero__search-icon">🔍</span>
+            <span className="hero__search-icon">
+              <img src={search} alt="" />
+            </span>
           </button>
 
           <button className="hero__cta-btn">

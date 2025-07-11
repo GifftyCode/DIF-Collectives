@@ -1,6 +1,6 @@
 import React from "react";
 import "./CallToAction.scss";
-import hero from "../../assets/images/6.png";
+import hero from "../../assets/images/cta.jpeg";
 
 const CallToAction = () => {
   return (
@@ -15,7 +15,9 @@ const CallToAction = () => {
           <div className="hero-badge">What We Do</div>
           <h1 className="hero-title">Healthy life with fresh products</h1>
           <p className="hero-description">
-            There are many variations of passages of Lorem Ipsum available...
+            There are many variations of passages of Lorem Ipsum available, but
+            the majority have suffered alteration in some form, by injected
+            humour, or randomised words which don't look even.
           </p>
           <div className="hero-stats">
             <div className="stat-item">

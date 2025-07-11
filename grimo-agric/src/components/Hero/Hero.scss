@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  height: 100vh;
+  height: 70vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -30,8 +30,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 40px;
-    // background: rgba(26, 46, 35, 0.9);
-    // backdrop-filter: blur(10px);
 
     &-brand {
       display: flex;
@@ -139,7 +137,7 @@
     gap: 10px;
 
     &-icon {
-      font-size: 20px;
+      font-size: 4px;
       color: #f4d03f;
     }
 

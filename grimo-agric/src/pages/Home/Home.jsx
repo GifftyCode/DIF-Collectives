@@ -6,6 +6,7 @@ import Overview from "../../components/Overview/Overview";
 import ScrollingBanner from "../../components/Scrolling-banner/ScrollingBanner";
 import FeaturesShowcase from "../../components/Features-showcase/FeaturesShowcase";
 import TestimonialsSection from "../../components/Testimonial/TestimonialSection";
+import BrandsSection from "../../components/BrandsSection/BrandsSection";
 import CallToAction from "../../components/CallToAction/CallToAction";
 import HistorySection from "../../components/HistorySection/HistorySection";
 import TimelineSection from "../../components/TimelineSection/TimelineSection";
@@ -15,13 +16,20 @@ import BlogSection from "../../components/Blog/BlogSection";
 const Home = () => {
   return (
     <div className="home-page">
-      <Hero />
+      <Hero
+        title="Quality Trust: Direct to the Farm"
+        subtitle="We all need a little space to grow. Give yourself the space you need to find your inner you."
+        badge="BELIEVE IN QUALITY!"
+        ctaText="Contact Us"
+        showControls={true}
+      />
       <Features />
       <Overview />
       <ScrollingBanner />
       <Services />
       <FeaturesShowcase />
       <TestimonialsSection />
+      <BrandsSection />
       <CallToAction />
       <HistorySection />
       <TimelineSection />

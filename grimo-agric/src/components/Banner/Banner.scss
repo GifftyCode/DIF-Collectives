@@ -1,6 +1,6 @@
 .banner-section {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("../../assets/images/banner.png");
+    url("../../assets/images/plantImg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,6 +10,7 @@
   justify-content: center;
   border-radius: 12px;
   margin-top: 60px;
+  backdrop-filter: blur(6px);
 
   .hero-content {
     display: flex;

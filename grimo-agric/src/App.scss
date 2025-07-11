@@ -83,7 +83,6 @@ p {
   line-height: 1.6;
 }
 
-// Responsive breakpoints
 $breakpoints: (
   "xs": 0,
   "sm": 576px,
@@ -99,7 +98,6 @@ $breakpoints: (
   }
 }
 
-// Animation utilities
 @keyframes fadeIn {
   from {
     opacity: 0;
