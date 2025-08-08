@@ -4,6 +4,7 @@ import "./Hero.scss";
 import logo from "../../assets/images/logo.png";
 import phone from "../../assets/icons/phoneH.png";
 import search from "../../assets/icons/search.png";
+import { useAppContext } from "../../context/AppContext";
 
 const Hero = ({
   title,
@@ -11,11 +12,13 @@ const Hero = ({
   badge,
   ctaText,
   isAboutPage = false,
+  isProductPage = false,
   showControls = true,
 }) => {
   const [isHomeDropdownOpen, setIsHomeDropdownOpen] = useState(false);
   const [isPagesDropdownOpen, setIsPagesDropdownOpen] = useState(false);
   const location = useLocation();
+  const { state, dispatch, actionTypes } = useAppContext();
 
   const toggleHomeDropdown = () => {
     setIsHomeDropdownOpen(!isHomeDropdownOpen);
@@ -28,6 +31,10 @@ const Hero = ({
   const closeDropdowns = () => {
     setIsHomeDropdownOpen(false);
     setIsPagesDropdownOpen(false);
+  };
+
+  const toggleCart = () => {
+    dispatch({ type: actionTypes.TOGGLE_CART });
   };
 
   const defaultContent = {
@@ -46,10 +53,31 @@ const Hero = ({
     ctaText: "Learn More",
   };
 
-  const content = isAboutPage ? aboutContent : defaultContent;
+  const productContent = {
+    title: "Our Premium Products",
+    subtitle:
+      "Discover our wide range of fresh, organic, and quality farm products directly from our fields.",
+    badge: "SHOP NOW",
+    ctaText: "Browse Products",
+  };
+
+  const getContent = () => {
+    if (isProductPage) return productContent;
+    if (isAboutPage) return aboutContent;
+    return defaultContent;
+  };
+
+  const content = getContent();
+
+  // Check if current page is products page
+  const isProductsPage = location.pathname === "/products";
 
   return (
-    <div className={`hero ${isAboutPage ? "hero--about" : ""}`}>
+    <div
+      className={`hero ${isAboutPage ? "hero--about" : ""} ${
+        isProductPage ? "hero--product" : ""
+      }`}
+    >
       <div className="hero__background">
         <div className="hero__overlay"></div>
       </div>
@@ -86,6 +114,13 @@ const Hero = ({
           </div>
 
           <div className="hero__navbar-item">
+            <Link to="/products" className="hero__navbar-link">
+              PRODUCTS
+              <span className="hero__dropdown-icon">▼</span>
+            </Link>
+          </div>
+
+          <div className="hero__navbar-item">
             <Link to="/portfolio" className="hero__navbar-link">
               PORTFOLIO
               <span className="hero__dropdown-icon">▼</span>
@@ -109,7 +144,6 @@ const Hero = ({
           <div className="hero__contact-info">
             <div className="hero__phone">
               <span className="hero__phone-icon">
-                {" "}
                 <img src={phone} alt="" />
               </span>
               <div className="hero__phone-text">
@@ -124,6 +158,33 @@ const Hero = ({
               <img src={search} alt="" />
             </span>
           </button>
+
+          {/* Cart button - only show on products page */}
+          {isProductsPage && (
+            <button className="hero__cart-btn" onClick={toggleCart}>
+              <div className="hero__cart-icon-wrapper">
+                <svg
+                  className="hero__cart-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 4V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V4H20C20.5523 4 21 4.44772 21 5C21 5.55228 20.5523 6 20 6H19V19C19 20.1046 18.1046 21 17 21H7C5.89543 21 5 20.1046 5 19V6H4C3.44772 6 3 5.55228 3 5C3 4.44772 3.44772 4 4 4H7ZM7 6V19H17V6H7ZM9 4H15V3H9V4Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M9 8V17H11V8H9ZM13 8V17H15V8H13Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                {state.cartCount > 0 && (
+                  <span className="hero__cart-count">{state.cartCount}</span>
+                )}
+              </div>
+              <span className="hero__cart-text">Cart</span>
+            </button>
+          )}
 
           <button className="hero__cta-btn">
             Get In Touch

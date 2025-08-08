@@ -17,6 +17,110 @@ const initialState = {
   user: null,
   currentPage: "home",
   isMenuOpen: false,
+  cart: [],
+  cartCount: 0,
+  cartTotal: 0,
+  isCartOpen: false,
+
+  // Sample products for the product page
+  products: [
+    {
+      id: 1,
+      name: "Corn",
+      price: 45.0,
+      originalPrice: 50.0,
+      image: showCaseImage,
+      rating: 5,
+      category: "VEGETABLES",
+      description: "Fresh organic corn harvested from local farms",
+      inStock: true,
+      stockQuantity: 50,
+    },
+    {
+      id: 2,
+      name: "Tomato",
+      price: 16.0,
+      originalPrice: 20.0,
+      image: container,
+      rating: 4,
+      category: "VEGETABLES",
+      description: "Juicy red tomatoes perfect for cooking",
+      inStock: true,
+      stockQuantity: 30,
+    },
+    {
+      id: 3,
+      name: "Cabbage",
+      price: 18.0,
+      originalPrice: 22.0,
+      image: second,
+      rating: 5,
+      category: "VEGETABLES",
+      description: "Fresh green cabbage rich in vitamins",
+      inStock: true,
+      stockQuantity: 25,
+    },
+    {
+      id: 4,
+      name: "Kiwi",
+      price: 2.0,
+      originalPrice: 3.0,
+      image: third,
+      rating: 4,
+      category: "FRUITS",
+      description: "Sweet and tangy kiwi fruits",
+      inStock: true,
+      stockQuantity: 40,
+    },
+    {
+      id: 5,
+      name: "Organic Fertilizer",
+      price: 35.0,
+      originalPrice: 40.0,
+      image: six,
+      rating: 5,
+      category: "FERTILIZER",
+      description: "100% organic fertilizer for healthy plant growth",
+      inStock: true,
+      stockQuantity: 15,
+    },
+    {
+      id: 6,
+      name: "Farm Tools Set",
+      price: 85.0,
+      originalPrice: 100.0,
+      image: seven,
+      rating: 4,
+      category: "TOOLS",
+      description: "Complete set of essential farming tools",
+      inStock: true,
+      stockQuantity: 10,
+    },
+    {
+      id: 7,
+      name: "Organic Apples",
+      price: 25.0,
+      originalPrice: 30.0,
+      image: eight,
+      rating: 5,
+      category: "FRUITS",
+      description: "Fresh organic apples straight from the orchard",
+      inStock: false,
+      stockQuantity: 0,
+    },
+    {
+      id: 8,
+      name: "Vegetable Basket",
+      price: 55.0,
+      originalPrice: 65.0,
+      image: nine,
+      rating: 4,
+      category: "VEGETABLES",
+      description: "Mixed vegetable basket with seasonal produce",
+      inStock: true,
+      stockQuantity: 20,
+    },
+  ],
 
   services: [
     {
@@ -162,6 +266,29 @@ const actionTypes = {
   DELETE_FEATURE: "DELETE_FEATURE",
   SET_SHOWCASE_CONTENT: "SET_SHOWCASE_CONTENT",
   UPDATE_SHOWCASE_CONTENT: "UPDATE_SHOWCASE_CONTENT",
+
+  // Cart actions
+  ADD_TO_CART: "ADD_TO_CART",
+  REMOVE_FROM_CART: "REMOVE_FROM_CART",
+  UPDATE_CART_QUANTITY: "UPDATE_CART_QUANTITY",
+  CLEAR_CART: "CLEAR_CART",
+  TOGGLE_CART: "TOGGLE_CART",
+
+  // Product actions
+  SET_PRODUCTS: "SET_PRODUCTS",
+  ADD_PRODUCT: "ADD_PRODUCT",
+  UPDATE_PRODUCT: "UPDATE_PRODUCT",
+  DELETE_PRODUCT: "DELETE_PRODUCT",
+};
+
+// Helper function to calculate cart totals
+const calculateCartTotals = (cart) => {
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+  const cartTotal = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  return { cartCount, cartTotal };
 };
 
 // Reducer
@@ -218,6 +345,73 @@ const appReducer = (state, action) => {
         ...state,
         showcaseContent: { ...state.showcaseContent, ...action.payload },
       };
+
+    // Cart cases
+    case actionTypes.ADD_TO_CART: {
+      const existingItem = state.cart.find(
+        (item) => item.id === action.payload.id
+      );
+      let newCart;
+
+      if (existingItem) {
+        newCart = state.cart.map((item) =>
+          item.id === action.payload.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        newCart = [...state.cart, { ...action.payload, quantity: 1 }];
+      }
+
+      const { cartCount, cartTotal } = calculateCartTotals(newCart);
+      return { ...state, cart: newCart, cartCount, cartTotal };
+    }
+
+    case actionTypes.REMOVE_FROM_CART: {
+      const newCart = state.cart.filter((item) => item.id !== action.payload);
+      const { cartCount, cartTotal } = calculateCartTotals(newCart);
+      return { ...state, cart: newCart, cartCount, cartTotal };
+    }
+
+    case actionTypes.UPDATE_CART_QUANTITY: {
+      const newCart = state.cart
+        .map((item) =>
+          item.id === action.payload.id
+            ? { ...item, quantity: action.payload.quantity }
+            : item
+        )
+        .filter((item) => item.quantity > 0);
+
+      const { cartCount, cartTotal } = calculateCartTotals(newCart);
+      return { ...state, cart: newCart, cartCount, cartTotal };
+    }
+
+    case actionTypes.CLEAR_CART:
+      return { ...state, cart: [], cartCount: 0, cartTotal: 0 };
+
+    case actionTypes.TOGGLE_CART:
+      return { ...state, isCartOpen: !state.isCartOpen };
+
+    // Product cases
+    case actionTypes.SET_PRODUCTS:
+      return { ...state, products: action.payload };
+    case actionTypes.ADD_PRODUCT:
+      return { ...state, products: [...state.products, action.payload] };
+    case actionTypes.UPDATE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.map((product) =>
+          product.id === action.payload.id ? action.payload : product
+        ),
+      };
+    case actionTypes.DELETE_PRODUCT:
+      return {
+        ...state,
+        products: state.products.filter(
+          (product) => product.id !== action.payload
+        ),
+      };
+
     default:
       return state;
   }

@@ -6,6 +6,7 @@ import "./App.scss";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Footer from "./components/Footer/Footer";
+import Products from "./pages/Products/Products";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
             {/* Add more routes as needed */}
             {/* <Route path="/services" element={<Services />} />
                 <Route path="/blog" element={<Blog />} />
