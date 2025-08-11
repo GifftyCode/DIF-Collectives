@@ -1,22 +1,17 @@
-// Footer.scss
-
-// Variables
-$primary-green: #8bc34a; // Approximate primary green from image
-$secondary-green: #4caf50; // Darker green from original icon
-$footer-bg-color: #f8f7f0; // Light grey background of the main content area
-$top-bar-bg-color: #eddd5e; // Light yellow from the top bar
-$text-dark: #404a3d; // Dark text color for headings/logo
-$text-light-grey: #666666; // General body text color
-$text-lighter-grey: #999999; // Copyright text
-$border-color: #e5e5e5; // Separator lines
+$primary-green: #8bc34a;
+$secondary-green: #4caf50;
+$footer-bg-color: #f8f7f0;
+$top-bar-bg-color: #eddd5e;
+$text-dark: #404a3d;
+$text-light-grey: #666666;
+$text-lighter-grey: #999999;
+$border-color: #e5e5e5;
 $white: #fff;
-$icon-light-grey-bg: #f8f7f0; // Background for social/contact icons
+$icon-light-grey-bg: #f8f7f0;
 
-// Fonts (adjust if you have specific font files imported elsewhere)
 $font-signika: "Signika", Helvetica, sans-serif;
 $font-roboto: "Roboto", Helvetica, sans-serif;
 
-// Mixins
 @mixin flexCenter {
   display: flex;
   align-items: center;
@@ -37,19 +32,18 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
 
 .footer {
   position: relative;
-  background-color: $footer-bg-color; // Main footer content area background
-  padding-bottom: 40px; // Padding for the bottom section
-  overflow: hidden; // Keep decorative elements contained
+  background-color: $footer-bg-color;
+  padding-bottom: 40px;
+  overflow: hidden;
 
-  // New Top Bar Section
   &__top-bar {
     background-color: $top-bar-bg-color;
     padding: 20px 0;
-    margin-bottom: 80px; // Space between top bar and main footer content
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); // Subtle shadow if desired
+    margin-bottom: 80px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
     .top-bar__container {
-      max-width: 1400px; // Wider container as seen in image
+      max-width: 1400px;
       margin: 0 auto;
       padding: 0 20px;
       @include flexBetweenCenter;
@@ -67,10 +61,10 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
         padding: 0;
         margin: 0;
         display: flex;
-        gap: 40px; // Space between nav items
+        gap: 40px;
 
         li {
-          position: relative; // Needed for ::before positioning
+          position: relative;
           a {
             text-decoration: none;
             color: $text-dark;
@@ -79,18 +73,17 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
             font-size: 16px;
             text-transform: uppercase;
             transition: color 0.3s ease;
-            padding-left: 15px; // Space for the dot
+            padding-left: 15px;
 
-            // White circular dot
             &::before {
               content: "";
               position: absolute;
               left: 0;
               top: 50%;
               transform: translateY(-50%);
-              width: 6px; // Size of the dot
-              height: 6px; // Size of the dot
-              background-color: $white; // White color
+              width: 6px;
+              height: 6px;
+              background-color: $white;
               border-radius: 50%;
             }
 
@@ -98,41 +91,37 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
               color: $primary-green;
             }
           }
-          // Remove dot from the first item
+
           &:first-child a::before {
             display: none;
           }
         }
       }
       @media (max-width: 768px) {
-        width: 100%; // full width for smaller screens
-        justify-content: center; // center nav
+        width: 100%;
+        justify-content: center;
         ul {
           gap: 20px;
-          flex-wrap: wrap; // Allow nav items to wrap
+          flex-wrap: wrap;
           justify-content: center;
           li a {
-            padding-left: 0; // Remove dot padding for small screens
+            padding-left: 0;
             &::before {
-              display: none; // Hide dots on small screens for simplicity
+              display: none;
             }
           }
         }
       }
     }
 
-    // Vertical Separator
     .top-bar__separator {
-      width: 1px; // Thickness of the line
-      height: 25px; // Height of the line, reduced size
-      background-color: rgba(
-        $text-dark,
-        0.2
-      ); // Light dark color with transparency
-      margin: 0 30px; // Space around the separator
+      width: 1px;
+      height: 25px;
+      background-color: rgba($text-dark, 0.2);
+      margin: 0 30px;
 
       @media (max-width: 768px) {
-        display: none; // Hide on smaller screens
+        display: none;
       }
     }
 
@@ -151,41 +140,39 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
         font-family: $font-roboto;
         font-size: 16px;
         color: $text-dark;
-        text-decoration: none; // For links
+        text-decoration: none;
 
         .contact__icon {
           width: 50px;
           height: 50px;
-          background-color: $white; // White circle background
+          background-color: $white;
           border-radius: 50%;
           @include flexCenter;
-          color: $primary-green; // Icon color
+          color: $primary-green;
           font-size: 14px;
         }
 
         span {
-          white-space: nowrap; // Prevent wrapping for phone/email
+          white-space: nowrap;
         }
       }
     }
   }
 
-  // Main Footer Content Area
   &__container {
-    max-width: 1400px; // Adjust to match top bar width for consistency
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
   }
 
   &__content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr; // Matches image layout
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 60px;
     margin-bottom: 50px;
 
     @media (max-width: 1024px) {
-      // Adjust for smaller desktops/large tablets
-      grid-template-columns: 1.5fr 1fr 1fr; // Adjust columns for better fit
+      grid-template-columns: 1.5fr 1fr 1fr;
       gap: 40px;
     }
 
@@ -195,18 +182,17 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
     }
   }
 
-  // New: Main Heading / Tagline
   &__tagline {
-    grid-column: 2 / -1; // Spans across the right columns
+    grid-column: 2 / -1;
     font-family: $font-signika;
     font-weight: 500;
-    font-size: 28px; // Adjusted from image
+    font-size: 28px;
     line-height: 1.2;
     color: $text-dark;
-    margin-bottom: 30px; // Space below tagline to sections
+    margin-bottom: 30px;
 
     @media (max-width: 1024px) {
-      grid-column: 1 / -1; // Full width on smaller screens
+      grid-column: 1 / -1;
       font-size: 28px;
       text-align: center;
       margin-bottom: 20px;
@@ -214,22 +200,20 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
   }
 
   &__brand {
-    // No max-width as it takes its natural space in the grid
   }
 
   &__logo {
-    @include flexCenter; // Center the icon and text
-    justify-content: flex-start; // Align to start of column
+    @include flexCenter;
+    justify-content: flex-start;
     margin-bottom: 24px;
 
     .logo__icon {
       margin-right: 12px;
-      // SVG path colors from original code: #8BC34A, #4CAF50
     }
 
     .logo__text {
       font-family: $font-signika;
-      font-size: 30px; // Larger logo text as in image
+      font-size: 30px;
       font-weight: 700;
       color: $text-dark;
     }
@@ -239,7 +223,7 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
     color: $text-light-grey;
     line-height: 1.6;
     margin-bottom: 32px;
-    font-size: 15px; // Slightly smaller to fit image
+    font-size: 15px;
     font-family: $font-roboto;
   }
 
@@ -267,13 +251,13 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
       margin: 0;
 
       li {
-        margin-bottom: 12px; // Reduced spacing
+        margin-bottom: 12px;
       }
 
       .links__item {
         color: $text-light-grey;
         text-decoration: none;
-        font-size: 15px; // Slightly smaller
+        font-size: 15px;
         font-family: $font-roboto;
         transition: color 0.3s ease;
 
@@ -291,7 +275,7 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
       margin: 0;
 
       .hours__item {
-        margin-bottom: 12px; // Reduced spacing
+        margin-bottom: 12px;
         color: $text-light-grey;
         font-size: 15px;
         line-height: 1.5;
@@ -310,7 +294,6 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
     }
   }
 
-  // Bottom Section
   &__bottom {
     border-top: 1px solid $border-color;
     padding-top: 30px;
@@ -349,7 +332,6 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
     }
   }
 
-  // Decorative Elements
   &__decoration {
     position: absolute;
     top: 0;
@@ -357,47 +339,46 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 0; // Behind content
-    overflow: hidden; // Ensures parts don't spill
+    z-index: 0;
+    overflow: hidden;
   }
 
   .decoration__leaf {
     position: absolute;
-    left: 10%; // Adjusted position
-    top: 60%; // Adjusted position
+    left: 10%;
+    top: 60%;
     transform: translate(-50%, -50%) rotate(-15deg);
-    width: 250px; // Larger
-    height: 250px; // Larger
-    background-image: url("https://via.placeholder.com/250x250/e8f5e8?text=Leaf+SVG"); // Placeholder, ideally a subtle leaf SVG
+    width: 250px;
+    height: 250px;
+    background-image: url("https://via.placeholder.com/250x250/e8f5e8?text=Leaf+SVG");
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.1; // Very subtle
-    filter: grayscale(100%) brightness(150%); // Make it look like a pale grey leaf
-    mix-blend-mode: multiply; // To blend nicely with background
+    opacity: 0.1;
+    filter: grayscale(100%) brightness(150%);
+    mix-blend-mode: multiply;
   }
 
   .decoration__wheat {
     position: absolute;
-    right: -20px; // Slightly off-screen to match image
-    bottom: -20px; // Slightly off-screen
-    width: 200px; // Size
-    height: 250px; // Size
-    background-image: url("https://via.placeholder.com/200x250/deb887?text=Wheat+SVG"); // Placeholder, ideally a subtle wheat SVG
+    right: -20px;
+    bottom: -20px;
+    width: 200px;
+    height: 250px;
+    background-image: url("https://via.placeholder.com/200x250/deb887?text=Wheat+SVG");
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.15; // Subtle
-    filter: brightness(110%); // Slightly brighter
+    opacity: 0.15;
+    filter: brightness(110%);
   }
 }
 
-// Social Links (Font Awesome 5 assumed for icons)
 .social__link {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: $icon-light-grey-bg; // Light grey circle background
+  background-color: $icon-light-grey-bg;
   @include flexCenter;
-  color: $text-dark; // Icon color
+  color: $text-dark;
   text-decoration: none;
   transition: all 0.3s ease;
 
@@ -412,11 +393,10 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
   }
 }
 
-// Responsive Design
 @media (max-width: 1024px) {
   .footer {
     &__content {
-      grid-template-columns: 1fr 1fr; // Adjust for tablets
+      grid-template-columns: 1fr 1fr;
     }
     .decoration__leaf {
       left: 0%;
@@ -475,7 +455,7 @@ $font-roboto: "Roboto", Helvetica, sans-serif;
     }
 
     &__decoration {
-      display: none; // Hide decorative elements on very small screens
+      display: none;
     }
   }
 }

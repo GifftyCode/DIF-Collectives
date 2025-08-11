@@ -98,7 +98,6 @@
             justify-content: center;
             position: relative;
 
-            // Create the circular progress ring
             &::before {
               content: "";
               position: absolute;

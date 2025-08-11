@@ -34,7 +34,7 @@ function setupModeButtons() {
 }
 
 function setupSquares() {
-  container.innerHTML = ""; // clear previous squares
+  container.innerHTML = "";
   for (let i = 0; i < 6; i++) {
     const square = document.createElement("div");
     square.classList.add("square");

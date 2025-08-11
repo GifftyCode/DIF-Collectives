@@ -69,7 +69,6 @@ const Hero = ({
 
   const content = getContent();
 
-  // Check if current page is products page
   const isProductsPage = location.pathname === "/products";
 
   return (
@@ -159,7 +158,6 @@ const Hero = ({
             </span>
           </button>
 
-          {/* Cart button - only show on products page */}
           {isProductsPage && (
             <button className="hero__cart-btn" onClick={toggleCart}>
               <div className="hero__cart-icon-wrapper">

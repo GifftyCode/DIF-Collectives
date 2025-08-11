@@ -29,7 +29,6 @@ const Navbar = ({ transparent = false }) => {
     dispatch({ type: actionTypes.TOGGLE_CART });
   };
 
-  // Check if current page is products page
   const isProductsPage = location.pathname === "/products";
 
   return (

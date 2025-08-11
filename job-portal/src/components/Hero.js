@@ -27,7 +27,6 @@ const Hero = ({ onSearch }) => {
               employers, and data seekers alike.
             </p>
 
-            {/* Search Bar */}
             <div className="mt-8 bg-white rounded-lg shadow-lg p-4 flex flex-col sm:flex-row gap-4">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />

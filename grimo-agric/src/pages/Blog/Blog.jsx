@@ -139,10 +139,8 @@ const Blog = () => {
         </div>
       </div>
 
-      {/* Blog Content Section */}
       <section className="blog-section">
         <div className="blog-container">
-          {/* Filter Buttons */}
           <div className="blog-filters">
             {filterOptions.map((filter) => (
               <button
@@ -157,7 +155,6 @@ const Blog = () => {
             ))}
           </div>
 
-          {/* Blog Grid */}
           <div className="blog-grid">
             {filteredBlogs.map((blog) => (
               <div

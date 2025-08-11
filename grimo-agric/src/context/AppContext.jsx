@@ -12,7 +12,6 @@ import seven from "../assets/images/7.png";
 import eight from "../assets/images/8.png";
 import nine from "../assets/images/9.png";
 
-// Initial state
 const initialState = {
   user: null,
   currentPage: "home",
@@ -22,7 +21,6 @@ const initialState = {
   cartTotal: 0,
   isCartOpen: false,
 
-  // Sample products for the product page
   products: [
     {
       id: 1,
@@ -250,7 +248,6 @@ const initialState = {
   },
 };
 
-// Action types
 const actionTypes = {
   SET_USER: "SET_USER",
   SET_CURRENT_PAGE: "SET_CURRENT_PAGE",
@@ -267,21 +264,18 @@ const actionTypes = {
   SET_SHOWCASE_CONTENT: "SET_SHOWCASE_CONTENT",
   UPDATE_SHOWCASE_CONTENT: "UPDATE_SHOWCASE_CONTENT",
 
-  // Cart actions
   ADD_TO_CART: "ADD_TO_CART",
   REMOVE_FROM_CART: "REMOVE_FROM_CART",
   UPDATE_CART_QUANTITY: "UPDATE_CART_QUANTITY",
   CLEAR_CART: "CLEAR_CART",
   TOGGLE_CART: "TOGGLE_CART",
 
-  // Product actions
   SET_PRODUCTS: "SET_PRODUCTS",
   ADD_PRODUCT: "ADD_PRODUCT",
   UPDATE_PRODUCT: "UPDATE_PRODUCT",
   DELETE_PRODUCT: "DELETE_PRODUCT",
 };
 
-// Helper function to calculate cart totals
 const calculateCartTotals = (cart) => {
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   const cartTotal = cart.reduce(
@@ -291,7 +285,6 @@ const calculateCartTotals = (cart) => {
   return { cartCount, cartTotal };
 };
 
-// Reducer
 const appReducer = (state, action) => {
   switch (action.type) {
     case actionTypes.SET_USER:
@@ -346,7 +339,6 @@ const appReducer = (state, action) => {
         showcaseContent: { ...state.showcaseContent, ...action.payload },
       };
 
-    // Cart cases
     case actionTypes.ADD_TO_CART: {
       const existingItem = state.cart.find(
         (item) => item.id === action.payload.id
@@ -392,7 +384,6 @@ const appReducer = (state, action) => {
     case actionTypes.TOGGLE_CART:
       return { ...state, isCartOpen: !state.isCartOpen };
 
-    // Product cases
     case actionTypes.SET_PRODUCTS:
       return { ...state, products: action.payload };
     case actionTypes.ADD_PRODUCT:
@@ -417,10 +408,8 @@ const appReducer = (state, action) => {
   }
 };
 
-// Create context
 const AppContext = createContext();
 
-// Provider component
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
@@ -433,7 +422,6 @@ export const AppProvider = ({ children }) => {
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
-// Custom hook to use the context
 export const useAppContext = () => {
   const context = useContext(AppContext);
   if (!context) {

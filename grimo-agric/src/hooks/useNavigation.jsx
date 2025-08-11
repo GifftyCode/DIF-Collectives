@@ -5,7 +5,6 @@ export const useNavigation = () => {
   const { state, dispatch, actionTypes } = useAppContext();
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -16,7 +15,6 @@ export const useNavigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Navigation methods
   const setCurrentPage = (page) => {
     dispatch({ type: actionTypes.SET_CURRENT_PAGE, payload: page });
   };

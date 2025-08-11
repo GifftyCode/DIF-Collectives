@@ -1,6 +1,5 @@
 @import "variables";
 
-// Flexbox mixins
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -18,7 +17,6 @@
   flex-direction: column;
 }
 
-// Responsive breakpoints
 @mixin respond-to($breakpoint) {
   @if $breakpoint == sm {
     @media (min-width: $breakpoint-sm) {
@@ -42,7 +40,6 @@
   }
 }
 
-// Button mixin
 @mixin button-base {
   padding: 12px 24px;
   border: none;
@@ -62,7 +59,6 @@
   }
 }
 
-// Card mixin
 @mixin card-base {
   background: $white;
   border-radius: $border-radius-lg;
@@ -75,7 +71,6 @@
   }
 }
 
-// Container mixin
 @mixin container {
   max-width: 1200px;
   margin: 0 auto;
@@ -86,7 +81,6 @@
   }
 }
 
-// Section spacing
 @mixin section-spacing {
   padding: $spacing-3xl 0;
 

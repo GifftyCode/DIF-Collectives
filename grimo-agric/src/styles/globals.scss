@@ -17,7 +17,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Typography
 h1,
 h2,
 h3,
@@ -68,26 +67,22 @@ a {
   }
 }
 
-// Images
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-// Lists
 ul,
 ol {
   list-style: none;
 }
 
-// Buttons
 button {
   font-family: inherit;
   font-size: inherit;
 }
 
-// Utility classes
 .container {
   @include container;
 }
@@ -124,7 +119,6 @@ button {
   border: 0;
 }
 
-// Animations
 @keyframes fadeInUp {
   from {
     opacity: 0;

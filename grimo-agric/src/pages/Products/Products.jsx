@@ -4,6 +4,7 @@ import Hero from "../../components/Hero/Hero";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Cart from "../../components/Cart/Cart";
 import { useAppContext } from "../../context/AppContext";
+import Navbar from "../../components/Navbar/Navbar";
 
 const Products = () => {
   const { state } = useAppContext();
@@ -11,7 +12,6 @@ const Products = () => {
   const [sortBy, setSortBy] = useState("name");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Get unique categories
   const categories = useMemo(() => {
     const cats = [
       ...new Set(state.products.map((product) => product.category)),
@@ -19,18 +19,15 @@ const Products = () => {
     return ["ALL", ...cats];
   }, [state.products]);
 
-  // Filter and sort products
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = state.products;
 
-    // Filter by category
     if (selectedCategory !== "ALL") {
       filtered = filtered.filter(
         (product) => product.category === selectedCategory
       );
     }
 
-    // Filter by search term
     if (searchTerm) {
       filtered = filtered.filter(
         (product) =>
@@ -39,7 +36,6 @@ const Products = () => {
       );
     }
 
-    // Sort products
     const sorted = [...filtered].sort((a, b) => {
       switch (sortBy) {
         case "name":
@@ -70,6 +66,8 @@ const Products = () => {
       />
 
       <div className="products-page__container">
+        <div className="hero--product__overlay"></div>
+
         <div className="products-page__header">
           <h2 className="products-page__title">Check Our Products</h2>
           <p className="products-page__subtitle">
